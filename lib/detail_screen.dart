@@ -17,7 +17,31 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Image.asset('images/farm-house.jpg'),
+            Stack(
+              children: [
+                Image.asset('images/farm-house.jpg'),
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          child: IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(Icons.arrow_back)
+                          ),
+                        ),
+                        const FavoriteButton()
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
             Container(
               margin: const EdgeInsets.only(top: 16.0),
               child: const Text(
@@ -107,3 +131,30 @@ class DetailScreen extends StatelessWidget {
     );
   }
 }
+
+class FavoriteButton extends StatefulWidget {
+  const FavoriteButton({super.key});
+
+  @override
+  State<FavoriteButton> createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+        onPressed: () {
+          setState(() {
+            isFavorite = !isFavorite;
+          });
+        },
+        icon: Icon(
+            isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+        )
+    );
+  }
+}
+
