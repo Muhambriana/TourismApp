@@ -25,7 +25,10 @@ class MainScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     flex: 1,
-                      child: Image.asset(place.imageAsset)
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Image.asset(place.imageAsset)
+                      )
                   ),
                   Expanded(
                     flex: 2,
