@@ -10,7 +10,7 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Wisata Bandung. Size: ${MediaQuery.of(context).size.width}'),
+        title: Text('Wisata Bandung'),
       ),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraint) {
@@ -91,6 +91,8 @@ class TourismPlaceGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: itemCount,
+      crossAxisSpacing: 16,
+      mainAxisSpacing: 16,
       children: tourismPlaceList.map((place) {
         return InkWell(
           onTap: () {
